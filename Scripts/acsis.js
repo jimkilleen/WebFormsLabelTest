@@ -1,5 +1,6 @@
 ﻿(function () {
-  fetch('http://127.0.0.1:9000/DeviceIntegration/GetPrinters', {
+  fetch('http://127.0.0.1:9000/ClientIntegration/GetPrinters', {
+    //fetch('https://192.168.1.191:9000/ClientIntegration/GetPrinters', {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
@@ -27,7 +28,7 @@
 })();
 
 async function printLocalLabel() {
-  printerList
+  //printerList
   var printerListSelect = document.getElementById("printerList");
   var selectedPrinter = printerListSelect.options[printerListSelect.selectedIndex].text;
   var AssetId = document.getElementById("AssetId").value;
@@ -46,7 +47,7 @@ async function printLocalLabel() {
     }
   };
 
-  fetch('http://127.0.0.1:9000/DeviceIntegration/PrintLabel', {
+  fetch('http://127.0.0.1:9000/ClientIntegration/PrintLabel', {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
@@ -84,19 +85,27 @@ async function printLabel() {
     returnedBase64Zpl = data;
     plainZpl = atob(data);
     document.getElementById("ZplText").value = plainZpl;
+   
     var printerListSelect = document.getElementById("printerList");
     var selectedPrinter = printerListSelect.options[printerListSelect.selectedIndex].text;
+    var AssetId = document.getElementById("AssetId").value;
+    var AssetIdHdr = document.getElementById("AssetIdHdr").value;
     var printLabel = {
       "LabelType": "ZPL",
-      "LabelFormat": "ASSET",
-      "LabelImage": returnedBase64Zpl,
+      "ZplFormat": "ASSET",
+      "ZplText": returnedBase64Zpl,
+      "LabelImage": "",
       "PrinterName": selectedPrinter,
+      "LabelData": [
+        { "LabelProperty": "ASSETID", "LabelValue": AssetId },
+        { "LabelProperty": "ASSETIDHR", "LabelValue": AssetIdHdr }
+      ],
       "RequestPrintSettings": {
         "Copies": "2"
       }
     };
 
-    fetch('http://127.0.0.1:9000/DeviceIntegration/PrintLabel', {
+    fetch('http://127.0.0.1:9000/ClientIntegration/PrintLabel', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
