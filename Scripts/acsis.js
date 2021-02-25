@@ -93,7 +93,7 @@ async function printLabel() {
     returnedBase64Zpl = data;
     plainZpl = atob(data);
     document.getElementById("ZplText").value = plainZpl;
-   
+
     var printerListSelect = document.getElementById("printerList");
     var selectedPrinter = printerListSelect.options[printerListSelect.selectedIndex].text;
     var AssetId = document.getElementById("AssetId").value;
@@ -129,3 +129,23 @@ async function printLabel() {
     });
   });
 }
+
+async function newPrintLabel() {
+  var labelObject = document.getElementById("AcsisLabelData");
+
+  fetch('http://127.0.0.1:9000/ClientIntegration/Print', {
+    //fetch('http://localhost:7071/api/ProcessLabel', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    //body: JSON.stringify(labelObject.value)
+    body: labelObject.value
+  }).then(function (response) {
+    return response.text();
+  }).then(function (data) {
+    returnedBase64Zpl = data;
+
+  });
+}
+

@@ -13,25 +13,38 @@ namespace WebFormsLabelTest
     {
         protected void Page_Load(object sender, EventArgs e) {
 
-            //if (!IsPostBack) {
-            //    ClientScriptManager cs = Page.ClientScript;
-            //    cs.RegisterClientScriptInclude("teste", "../Scripts/printmore.js");
-            //}
+            var labels = new List<AcsisLabel>();
 
-            dynamic label = new JObject();
-            label.LabelType = "NiceLabel";
+            var label = new AcsisLabel();
+            label.LabelSystem = "NiceLabel";
             label.LabelTemplate = "https://elm-dev.acsisinc.com:8080/Labels/ADDRESS_ASH.nlbl";
-            label.PrinterName = "printer1";
-            List<LabelDataPair> labelData = new List<LabelDataPair>();
-            labelData.Add(new LabelDataPair { FieldName = "city", FieldValue = "Philly" });
-            labelData.Add(new LabelDataPair { FieldName = "street", FieldValue = "Buck Dr" });
-            JObject json = new JObject();
-            json["LabelDatJK"] = JToken.FromObject(labelData);
+            // Fields to Add
+            label.LabelFields.Add(new LabelField { FieldName = "city", FieldValue = "Philly" });
+            label.LabelFields.Add(new LabelField { FieldName = "street", FieldValue = "Buck Dr" });
 
-            label.LabelData = json["LabelDatJK"];
-            AcsisLabelData.Value = JsonConvert.SerializeObject(label);
+            labels.Add(label);
+
+            AcsisLabelData.Value = JsonConvert.SerializeObject(labels);
         }
-        private class LabelDataPair
+
+        public class AcsisLabel
+        {
+            public AcsisLabel() {
+                LabelFields = new List<LabelField>();
+            }
+            public string LabelSystem { get; set; }               // NiceLabel, Bartender, ZPL
+            public string LabelTemplate { get; set; }
+            public string ZplFormat { get; set; }               // If ZplText is not provided, retrieve from database based on this value
+            public string ZplText { get; set; }                 // Optionally provided from caller instead of using ZplFormat
+            public string ImageData { get; set; }               // If LabelType is a JPG, PNG, etc. (future use)
+            public List<LabelField> LabelFields { get; set; }
+            public string PrinterName { get; set; }
+            public string PrinterIpAddress { get; set; }
+            public string PrinterPort { get; set; }
+            public int LabelCopies { get; set; }
+        }
+
+        public class LabelField
         {
             public string FieldName { get; set; }
             public string FieldValue { get; set; }

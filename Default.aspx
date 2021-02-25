@@ -32,8 +32,8 @@
             </tr>
             <tr>
                 <td>
-                    <%--<button type="button" onclick="printLocalLabel()" class="btn btn-primary" style="margin-left:-12px">Print Label</button>--%></td>
-                    <button type="button" onclick="printLabel()" class="btn btn-primary" style="margin-left:-12px">Print Label</button></td>
+                    <%--<button type="button" onclick="printLocalLabel()" class="btn btn-primary" style="margin-left:-12px">Print Label</button></td>--%>
+                    <button type="button" onclick="newPrintLabel()" class="btn btn-primary" style="margin-left:-12px">Print Label</button></td>
                 <td>
                     <select id="printerList" name="printerList" class ="selectCss" style="margin-left:3px; width:175px" >
                         <option selected="selected">Loading Printer List...</option>
