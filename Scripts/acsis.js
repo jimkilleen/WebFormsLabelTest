@@ -29,7 +29,7 @@
 
 // Get Label Info buried in Hidden Field
 $(window).on("load", function () {
-  var val = document.getElementById("hdnSomeText");
+  var val = document.getElementById("AcsisLabelData");
   console.log(val.value);
 });
 

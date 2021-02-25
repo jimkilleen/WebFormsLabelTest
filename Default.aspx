@@ -43,7 +43,7 @@
         <br />
         <br />
         <textarea id="ZplText" rows="8" cols="200"></textarea>
-        <asp:HiddenField ID="hdnSomeText" runat="server" ClientIDMode="Static"/>
+        <asp:HiddenField ID="AcsisLabelData" runat="server" ClientIDMode="Static"/>
 
     </div>
 
