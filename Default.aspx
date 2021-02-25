@@ -43,6 +43,8 @@
         <br />
         <br />
         <textarea id="ZplText" rows="8" cols="200"></textarea>
+        <asp:HiddenField ID="hdnSomeText" runat="server" ClientIDMode="Static"/>
+
     </div>
 
 </asp:Content>

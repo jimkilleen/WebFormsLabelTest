@@ -27,6 +27,12 @@
   });
 })();
 
+// Get Label Info buried in Hidden Field
+$(window).on("load", function () {
+  var val = document.getElementById("hdnSomeText");
+  console.log(val.value);
+});
+
 async function printLocalLabel() {
   //printerList
   var printerListSelect = document.getElementById("printerList");
@@ -64,14 +70,16 @@ async function printLocalLabel() {
 }
 
 async function printLabel() {
+  var AssetId = document.getElementById("AssetId").value;
+  var AssetIdHdr = document.getElementById("AssetIdHdr").value;
   var returnedBase64Zpl = "";
   var labelObject = {
     "LabelType": "ZPL",
     "ZplFormat": "Asset",
     "ZplText": btoa("^XA  Material:{Material} spaces here Batch:{Batch} - Done ^XZ"),
     "LabelData": [
-      { "LabelProperty": "ASSETID", "LabelValue": "1234567890" },
-      { "LabelProperty": "ASSETIDHDR", "LabelValue": "BAT12345" }
+      { "LabelProperty": "ASSETID", "LabelValue": AssetId },
+      { "LabelProperty": "ASSETIDHR", "LabelValue": AssetIdHdr }
     ]
   };
 
