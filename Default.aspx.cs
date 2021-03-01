@@ -32,15 +32,10 @@ namespace WebFormsLabelTest
             public AcsisLabel() {
                 LabelFields = new List<LabelField>();
             }
-            public string LabelSystem { get; set; }               // NiceLabel, Bartender, ZPL
-            public string LabelTemplate { get; set; }
-            public string ZplFormat { get; set; }               // If ZplText is not provided, retrieve from database based on this value
-            public string ZplText { get; set; }                 // Optionally provided from caller instead of using ZplFormat
-            public string ImageData { get; set; }               // If LabelType is a JPG, PNG, etc. (future use)
-            public List<LabelField> LabelFields { get; set; }
+            public string LabelSystem { get; set; }             // NiceLabel, Bartender, ZPL
             public string PrinterName { get; set; }
-            public string PrinterIpAddress { get; set; }
-            public string PrinterPort { get; set; }
+            public string LabelTemplate { get; set; }           // URL to template or name of local file 
+            public List<LabelField> LabelFields { get; set; }
             public int LabelCopies { get; set; }
         }
 

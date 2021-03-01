@@ -27,11 +27,6 @@
   });
 })();
 
-// Get Label Info buried in Hidden Field
-$(window).on("load", function () {
-  var val = document.getElementById("AcsisLabelData");
-  console.log(val.value);
-});
 
 async function printLocalLabel() {
   //printerList
@@ -148,4 +143,12 @@ async function newPrintLabel() {
 
   });
 }
+
+
+// Get Label Info buried in Hidden Field
+$(window).on("load", function () {
+  var val = document.getElementById("AcsisLabelData");
+  console.log(val.value);
+});
+
 
