@@ -33,9 +33,9 @@
             <tr>
                 <td>
                     <%--<button type="button" onclick="printLocalLabel()" class="btn btn-primary" style="margin-left:-12px">Print Label</button></td>--%>
-                    <button type="button" onclick="newPrintLabel()" class="btn btn-primary" style="margin-left:-12px">Print Label</button></td>
+                    <button type="button" onclick="AcsisPrintLabel()" class="btn btn-primary" style="margin-left:-12px">Print Label</button></td>
                 <td>
-                    <select id="printerList" name="printerList" class ="selectCss" style="margin-left:3px; width:175px" >
+                    <select id="printerList" name="printerList" ClientIDMode="Static" onserverchange="printerList_ServerChange" runat="server" class ="selectCss" style="margin-left:3px; width:175px" >
                         <option selected="selected">Loading Printer List...</option>
                     </select></td>
             </tr>
