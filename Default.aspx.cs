@@ -14,8 +14,7 @@ namespace WebFormsLabelTest
         string pr = "";
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
-                //ClientScriptManager cs = Page.ClientScript;
-                //this.printerList.Attributes.Add("onchange", cs.GetPostBackEventReference(this.printerList, this.printerList.ID));
+          
             }
             //var test = Request.Form["printerList"];
             //var test1 = test.SelectedItem.Value;
