@@ -9,9 +9,12 @@
   }).then(function (response) {
     return response.text();
   }).then(function (data) {
-    returnedBase64Zpl = data;
+    console.log(data);
+  }).catch(function (error) {
+    console.log(error);
   });
 };
+
 
 (function () {
   fetch('http://127.0.0.1:9000/ClientIntegration/GetPrinters', {
@@ -39,4 +42,11 @@
   });
 })();
 
-
+async function Test() {
+  var e = document.getElementById("printerList");
+  var result = e.options[e.selectedIndex].value;
+  alert(result);
+  var txt = e.options[e.selectedIndex].text;
+  alert(txt); 
+  
+};
